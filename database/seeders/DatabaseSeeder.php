@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
             $this->call([
                 GeneroSeeder::class,
                 AtorSeeder::class,
-            ])
+            ]);
     }
 }
