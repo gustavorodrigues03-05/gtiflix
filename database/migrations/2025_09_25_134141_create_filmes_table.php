@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('filmes', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('name');
             $table->date('lancamento')->nullable();
             $table->integer('classificacao')->nullable();
             $table->integer('duracao')->nullable();
             $table->text('descricao')->nullable();
-            $table->string('poster');
-            $table->string('capa');
-            $table->foreignId('diretor_id')->constrained('diretores','id')->nullable();
-            $table->foreignId('produtora_id')->constrained()->nullable();
-            $table->foreignId('nacionalidade_id')->constrained()->nullable();
+            $table->string('poster')->nullable();
+            $table->string('capa')->nullable();
+            $table->foreignId('diretor_id')->nullable()->constrained('diretores','id');
+            $table->foreignId('produtora_id')->nullable()->constrained();
+            $table->foreignId('nacionalidade_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
