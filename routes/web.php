@@ -4,11 +4,9 @@ use App\Models\Genero;
 use App\Models\Nacionalidade;
 use App\Models\Produtora;
 use App\Models\Filme;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/gustavo', function () {
     echo 'Olá Gustavo';
@@ -32,8 +30,19 @@ Route::get('/atores', function() {
     dd($minhaNovaVariavel);
 });
 
-Route::get('/lista-filmes', function() {
+Route::get('/', function() {
     $filmes = Filme::all();
     return view('lista-filmes',
     compact('filmes'));
 });
+
+Route::get('/detalhes-filme/{filme}',
+function(Filme $filme){
+ return view('detalhes-filme', compact('filme'));
+})->name('detalhes-filme');
+
+Route::view('/login','login')->name('login');
+
+Route::post('/logar', function (Request $request) {
+    dd($request);
+})->name('logar');
